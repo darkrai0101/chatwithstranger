@@ -75,6 +75,9 @@ module.exports = function(app,io){
 
 			//giam so nguoi online di 1
 			connectCounter--;
+
+			socket.broadcast.to(socket.room).emit('statusRoom', '0');
+			socket.broadcast.emit('connectCounter', connectCounter);
 		});
 
 
