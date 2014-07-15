@@ -1,0 +1,220 @@
+/*------------- Reset browser differences ------------- */
+
+
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* ------------ Body styles ------------ */
+
+
+body {
+	background-color: #f0f1f3;
+	color:#667073;
+	font: 16px/1.3 'Arial',sans-serif;
+}
+
+
+
+
+/* ------------ Header styles ------------ */
+
+
+
+/* ------ Home ------ */
+
+
+.homebanner {
+	height: 120px;
+	background-color: #3c4446;
+}
+
+.homebannertext {
+	text-align:center;
+	padding-top: 35px;
+	font-family: 'Open Sans Condensed',serif;
+	font-weight: bold;
+	color:white;
+}
+.homebannertext span {
+	color: #d6441b;
+}
+
+#logo {
+	text-decoration: none;
+	color:white;
+}
+#logo:visited {
+	color: white;
+}
+
+
+
+/* ------ Invite ------ */
+
+
+.banner {
+	height: 70px;
+	background-color: #3c4446;
+	margin-bottom: 80px;
+}
+
+.bannertext {
+	text-align:center;
+	padding-top: 15px;
+	font-family: 'Open Sans Condensed',serif;
+	font-weight: bold;
+	color:white;
+	font-size:25px;
+}
+.bannertext span {
+	color: #d6441b;
+}
+
+/* ------ No Messages ------ */
+
+.body {
+	text-align:center;
+	width: 40%;
+	display: block;
+	margin:0px auto 650px;
+	background-color: #ffffff;
+	color: #637277;
+}
+
+#chats {
+	list-style-type: none;
+	margin-top:10px;
+}
+
+.me {
+	clear:both;
+	float:left;
+	margin-bottom:10px;
+}
+
+.you {
+	clear:both;
+	float:right;
+	margin-bottom:10px;
+}
+
+.you .image{
+	float:right;
+}
+
+#chats .me p {
+	text-align:left;
+	float: left;
+	display: inline-block;
+	margin-left: 20px;
+	margin-bottom:30px;
+	padding: 25px 34px;
+	min-width: 160px;
+	min-height: 10px;
+	max-width: 510px;
+	background-color: #FFF;
+	border-radius: 3px;
+	box-shadow: 0px 3px 3px #E3E4E6;
+	color: #637277;
+	line-height: 1.4;
+	word-wrap: break-word;
+}
+
+#chats .you p {
+	text-align:left;
+	float: left;
+	display: inline-block;
+	margin-right:20px;
+	margin-bottom:30px;
+	padding: 25px 34px;
+	min-width: 160px;
+	min-height: 10px;
+	max-width: 510px;
+	background-color: #FFF;
+	border-radius: 3px;
+	box-shadow: 0px 3px 3px #E3E4E6;
+	color: #637277;
+	line-height: 1.4;
+	word-wrap: break-word;
+}
+
+/* ------------ Footer styles ------------ */
+
+footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding-top: 30px;
+	background-color: white;
+	height: 130px;
+}
+#chatform {
+	width:700px;
+	margin: 0 auto;
+	background-color: white;
+}
+
+#message {
+	width: 550px;
+	height: 80px;
+	display: block;
+	float:left;
+	margin: 0 auto;
+	background-color: #f9f9f9;
+	border: 1px solid #cccccc;
+	border-radius: 2px;
+	padding-left: 20px;
+	padding-top: 20px;
+	resize: none;
+	font:inherit;
+	color:inherit;
+}
+
+#submit {
+	width: 110px;
+	height: 60px;
+	float:right;
+	text-align:center;
+	background-color: #73b4d4;
+	display: block;
+	margin: 0 auto;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 17px;
+	outline: none;
+	cursor:pointer;
+}
+
+
+
+
+/* ---------------------- HIDE -------------------------- */
+
+#content_chat{
+	width: 700px;
+	height: 300px;
+	border: none;
+	margin: auto;
+	overflow-y: scroll;
+}
+
+
+.line2{
+	opacity: 0.5;
+}
+
+#content_chat li{
+	padding: 6px 60px;
+}
+
+#content_chat li span{
+	padding: 3px;
+}
