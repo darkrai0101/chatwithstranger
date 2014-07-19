@@ -1,5 +1,6 @@
 var uuid = require('node-uuid');
 var rooms = [];
+// rooms = [{id: '1698129', lang: 'vi'},{id : '1231', lang: 'en'}]
 var connectCounter = 0;
 
 module.exports = function(app,io){
@@ -23,15 +24,16 @@ module.exports = function(app,io){
 
 		// nguoi dung login chuan bi chat
 		socket.on('login', function(data) {
-
+			// data = {lang : 'vi'}
 			// duyet qua tat ca cac room xem room nao con trong?
+			var lang = data.lang;
 			var flag = 0;
 			for(var i = 0;i < rooms.length; i++){
-				console.log(rooms[i], chat.clients(rooms[i]).length);
-				if(chat.clients(rooms[i]).length < 2){
-					socket.join(rooms[i]);
+				console.log(rooms[i].id, chat.clients(rooms[i]).length);
+				if(chat.clients(rooms[i]).length < 2 && rooms[i].lang == lang){
+					socket.join(rooms[i].id);
 
-					socket.room = rooms[i];
+					socket.room = rooms[i].id;
 
 					socket.emit('statusRoom', '1');
 					socket.broadcast.to(socket.room).emit('statusRoom', '1');
@@ -46,9 +48,13 @@ module.exports = function(app,io){
 			if(!flag){
 				// random id cho room
 				var roomId = uuid.v4();
-				rooms.push(roomId);
+				var temp_room = {
+					id  : roomId,
+					lang: lang 
+				};
+				rooms.push(temp_room);
 				socket.join(roomId);
-				socket.room = rooms[i];
+				socket.room = rooms[i].id;
 
 				socket.emit('statusRoom', '0');
 			}
@@ -66,7 +72,7 @@ module.exports = function(app,io){
 			// kiem tra neu room co so luong nguoi = 0 thi xoa khoi mang
 			if(chat.clients(socket.room).length < 1){
 				for(var i = 0; i < rooms.length; i++){
-					if(socket.room == rooms[i]){
+					if(socket.room == rooms[i].id){
 						rooms.splice(i, 1);
 						break;
 					}

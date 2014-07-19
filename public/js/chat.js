@@ -5,6 +5,8 @@ $(function(){
 		online = $("#online"),
 		statusRoom = $("#status_room"),
 		chats = $("#chats");
+		login = $("#login");
+		lang = $("#lang");
 
 	// connect to the socket
 	var socket = io.connect('/socket');
@@ -12,7 +14,6 @@ $(function(){
 	// on connection to server get the id of person's room
 	socket.on('connect', function(){
 		socket.emit('load', '1');
-		socket.emit('login', '1');
 	});
 
 	// save the gravatar url
@@ -30,15 +31,18 @@ $(function(){
 	});
 
 	socket.on('leave',function(data){
-
 		chats.empty();
-
 	});
 
 	socket.on('receive', function(data){
-			
 		console.log('receive', data);
 		createChatMessage(data.msg, 2);
+	});
+
+	// login vao
+	login.click(function(){
+		input_lang = lang.val();
+		socket.emit('login', {lang : input_lang});
 	});
 
 	textarea.keypress(function(e){
