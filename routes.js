@@ -86,6 +86,31 @@ module.exports = function(app,io){
 			socket.broadcast.emit('connectCounter', connectCounter);
 		});
 
+		// su kien roi khoi phong chat
+		socket.on('logout', function(){
+			// thong bao ve client nguoi nay da roi khoi phong
+			socket.broadcast.to(socket.room).emit('leave', '1');
+
+			// leave the room
+			socket.leave(socket.room);
+
+			// kiem tra neu room co so luong nguoi = 0 thi xoa khoi mang
+			if(chat.clients(socket.room).length < 1){
+				for(var i = 0; i < rooms.length; i++){
+					if(socket.room == rooms[i].id){
+						rooms.splice(i, 1);
+						break;
+					}
+				}
+			}
+
+			//giam so nguoi online di 1
+			connectCounter--;
+
+			socket.broadcast.to(socket.room).emit('statusRoom', '0');
+			socket.broadcast.emit('connectCounter', connectCounter);
+		});
+
 
 		// Handle the sending of messages
 		socket.on('msg', function(data){

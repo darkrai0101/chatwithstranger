@@ -7,6 +7,7 @@ $(function(){
 		chats = $("#chats");
 		login = $("#login");
 		lang = $("#lang");
+		logout = $("#logout");
 
 	// connect to the socket
 	var socket = io.connect('/socket');
@@ -43,6 +44,10 @@ $(function(){
 	login.click(function(){
 		input_lang = lang.val();
 		socket.emit('login', {lang : input_lang});
+	});
+
+	logout.click(function(){
+		socket.emit('logout', '1');
 	});
 
 	textarea.keypress(function(e){
