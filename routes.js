@@ -29,7 +29,7 @@ module.exports = function(app,io){
 			var lang = data.lang;
 			var flag = 0;
 			for(var i = 0;i < rooms.length; i++){
-				console.log(rooms[i].id, chat.clients(rooms[i]).length);
+				console.log(rooms[i].id, rooms[i].lang, chat.clients(rooms[i]).length);
 				if(chat.clients(rooms[i]).length < 2 && rooms[i].lang == lang){
 					socket.join(rooms[i].id);
 
